@@ -190,6 +190,7 @@ export class AuthCodeRedirectHandler implements IIncomingRedirectHandler {
       sessionId,
       webid,
       "true",
+      tokenSet.access_token,
       tokenSet.refresh_token,
       undefined,
       dpopKey,

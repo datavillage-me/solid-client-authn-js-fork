@@ -110,6 +110,7 @@ export async function saveSessionInfoToStorage(
   sessionId: string,
   webId?: string,
   isLoggedIn?: string,
+  accessToken?: string,
   refreshToken?: string,
   secure?: boolean,
   dpopKey?: KeyPair,
@@ -117,6 +118,9 @@ export async function saveSessionInfoToStorage(
   // TODO: Investigate why this does not work with a Promise.all
   if (refreshToken !== undefined) {
     await storageUtility.setForUser(sessionId, { refreshToken }, { secure });
+  }
+  if (accessToken !== undefined) {
+    await storageUtility.setForUser(sessionId, {accessToken}, {secure});
   }
   if (webId !== undefined) {
     await storageUtility.setForUser(sessionId, { webId }, { secure });
